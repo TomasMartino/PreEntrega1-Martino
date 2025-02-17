@@ -27,7 +27,6 @@ body {
     min-height: 70px;
   }
   
-  
   /* logo  */
   .logo {
     font-size: 30px;
@@ -38,7 +37,7 @@ body {
   /* ul  */
   .navMenu {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 60px;
   }
