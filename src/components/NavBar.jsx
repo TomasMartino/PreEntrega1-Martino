@@ -24,22 +24,22 @@ function Navbar() {
           </a>
           <ul className={`${styles.navMenu} ${isActive ? styles.active : ""}`}>
             <li onClick={removeActive}>
-              <a href="#home" className={`${styles.navLink}`}>
+              <a href="#home" >
                 Home
               </a>
             </li>
             <li onClick={removeActive}>
-              <a href="#home" className={`${styles.navLink}`}>
+              <a href="#home" >
                 All products
               </a>
             </li>
             <li onClick={removeActive}>
-              <a href="#home" className={`${styles.navLink}`}>
+              <a href="#home" >
                 Contact
               </a>
             </li>
             <li onClick={removeActive}>
-              <a href="#home" className={`${styles.navLink}`}>
+              <a href="#home" >
               <CartWidget/>
             
               </a>
