@@ -1,20 +1,20 @@
-
-import NavBar from './components/NavBar'
-import './App.css'
-import './components/NavBar.jsx'
-import ItemListContainer from'./components/ItemListContainer.jsx'
+import NavBar from "./components/NavBar";
+import "./App.css";
+import "./components/NavBar.jsx";
+import SectionHome from "./components/SectionHome";
+import CartSlider from "./components/CartSlider";
+import Footer from "./components/Footer";
 
 
 function App() {
-  let title = "Voga";
-
   return (
     <>
-
-     <NavBar/>
-     <ItemListContainer title={title}/>
+      <NavBar />
+      <SectionHome />
+      <CartSlider/>
+      <Footer/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -2,14 +2,11 @@ import { useState } from "react";
 import styles from "./Navbar.module.css";
 import CartWidget from './CartWidget';
 
-function Navbar() {
-  // adding the states
-  const [isActive, setIsActive] = useState(false);
-  //add the active class
+function Navbar() { 
+  const [isActive, setIsActive] = useState(false); 
   const toggleActiveClass = () => {
     setIsActive(!isActive);
-  };
-  //clean up function to remove the active class
+  }; 
   const removeActive = () => {
     setIsActive(false);
   };
@@ -17,8 +14,7 @@ function Navbar() {
     <div className="App">
       
       <header className="App-header">
-        <nav className={`${styles.navbar}`}>
-          {/* logo */}
+        <nav className={`${styles.navbar}`}> 
           <a href="#home" className={`${styles.logo}`}>
             Voga{" "}
           </a>
@@ -41,7 +37,6 @@ function Navbar() {
             <li onClick={removeActive}>
               <a href="#home" >
               <CartWidget/>
-            
               </a>
             </li>
           </ul>

@@ -3,10 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
-body{
+body {
   display: flex;
-  /*hacelo columna*/;
   flex-direction: column;
-  
-
+  background-image: url("./assets/home/pexels-bohlemedia-1884584.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
 }
