@@ -1,43 +1,37 @@
 import { useState } from "react";
 import styles from "./Navbar.module.css";
-import CartWidget from './CartWidget';
+import CartWidget from "./CartWidget";
+import { Link } from "react-router-dom";
 
-function Navbar() { 
-  const [isActive, setIsActive] = useState(false); 
+function Navbar() {
+  const [isActive, setIsActive] = useState(false);
   const toggleActiveClass = () => {
     setIsActive(!isActive);
-  }; 
+  };
   const removeActive = () => {
     setIsActive(false);
   };
   return (
     <div className="App">
-      
       <header className="App-header">
-        <nav className={`${styles.navbar}`}> 
-          <a href="#home" className={`${styles.logo}`}>
-            Voga{" "}
-          </a>
+        <nav className={`${styles.navbar}`}>
+          <Link to="/" className={`${styles.logo}`}>
+            Voga
+          </Link>
           <ul className={`${styles.navMenu} ${isActive ? styles.active : ""}`}>
             <li onClick={removeActive}>
-              <a href="#home" >
-                Home
-              </a>
+              <Link to="/">Home</Link>
             </li>
             <li onClick={removeActive}>
-              <a href="#home" >
-                All products
-              </a>
+              <Link to="/itemListContainer">All products</Link>
             </li>
             <li onClick={removeActive}>
-              <a href="#home" >
-                Contact
-              </a>
+              <Link to="/contact">Contact</Link>
             </li>
             <li onClick={removeActive}>
-              <a href="#home" >
-              <CartWidget/>
-              </a>
+              <Link to="/cart">
+                <CartWidget />
+              </Link>
             </li>
           </ul>
 

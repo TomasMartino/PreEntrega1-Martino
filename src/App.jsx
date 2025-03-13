@@ -1,18 +1,25 @@
 import NavBar from "./components/NavBar";
 import "./App.css";
 import "./components/NavBar.jsx";
-import SectionHome from "./components/SectionHome";
-import CartSlider from "./components/CartSlider";
 import Footer from "./components/Footer";
-
+import { Routes, Route } from "react-router-dom";
+import { Home } from "./Home";
+import { Contact } from "./Contact";
+import { ItemListContainer } from "./ItemListContainer";
+import ProductDetailContainer from "./components/ProductDetailContainer";
 
 function App() {
   return (
     <>
       <NavBar />
-      <SectionHome />
-      <CartSlider/>
-      <Footer/>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/itemListContainer" element={<ItemListContainer />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/producto/:id" element={<ProductDetailContainer />} />
+      </Routes>
+      <Footer />
     </>
   );
 }

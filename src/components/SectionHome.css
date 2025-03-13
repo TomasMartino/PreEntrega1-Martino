@@ -8,13 +8,12 @@
 }
 .button-home {
     margin-top: 1.5rem;
-  background-color: #120f0b;
+  background-color: #4c4780;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-}
-.button-home:hover {
-  background-color: #172a61;
+  text-align: center;
+  height: 2.5rem;
 }
