@@ -1,28 +1,33 @@
-import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useParams } from "react-router-dom"; 
+import { useState, useEffect } from "react";
 
-const ProductDetailContainer = () => {
-
-    const [product, setProduct] = useState([]);
-    const params = useParams();
+const ProductDetailContainer = () => { 
+  const params = useParams();
   const productId = params.id;
 
-  // Utiliza el productId para obtener los detalles del producto
-  const url = `https://dummyjson.com/products/${productId}`;
-  console.log(url);
-  fetch(url)
-    .then((res) => {
-      return res.json();
-    })
-    .then((res) => {
-      setProduct(res.product);
-      // Utiliza el producto para renderizar los detalles
-      return (
-        <div>
-          {product.find((product) => product.id === productId).title}
-        </div>
-      );
-    });
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    const url = `https://dummyjson.com/products/${productId}`;
+    fetch(url)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setProduct(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [productId]);
+
+  return (
+    <div>
+      <h1>{product.title}</h1>
+      <p>{product.description}</p>
+      <img src={product.thumbnail} alt={product.title} />
+    </div>
+  );
 };
 
 export default ProductDetailContainer;
