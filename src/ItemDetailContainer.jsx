@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom"; 
 import { useState, useEffect } from "react";
+import "./ItemDetailContainer.css";
+import NavBar from "./components/NavBar";
 
 const ItemDetailContainer = () => { 
   const params = useParams();
@@ -13,8 +15,8 @@ const ItemDetailContainer = () => {
       .then((res) => {
         return res.json();
       })
-      .then((data) => {
-        setProduct(data);
+      .then((res) => {
+        setProduct(res);
       })
       .catch((error) => {
         console.error(error);
@@ -23,6 +25,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div>
+      <NavBar/>
       <h1>{product.title}</h1>
       <p>{product.description}</p>
       <img src={product.thumbnail} alt={product.title} />

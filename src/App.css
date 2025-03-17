@@ -8,7 +8,7 @@ body {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  background-image: url("./assets/home/pexels-bohlemedia-1884584.jpg");
+ 
   background-size: cover;
   background-position: center;
   height: 80vh;

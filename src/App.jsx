@@ -1,4 +1,4 @@
-import NavBar from "./components/NavBar";
+
 import "./App.css";
 import "./components/NavBar.jsx";
 import Footer from "./components/Footer";
@@ -6,12 +6,11 @@ import { Routes, Route } from "react-router-dom";
 import { Home } from "./Home";
 import { Contact } from "./Contact";
 import { ItemListContainer } from "./ItemListContainer";
-import ItemDetailContainer from "./components/ItemDetailContainer";
+import ItemDetailContainer from "./ItemDetailContainer";
 
 function App() {
   return (
-    <>
-      <NavBar />
+    <div className="App"> 
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -20,7 +19,7 @@ function App() {
         <Route path="/producto/:id" element={<ItemDetailContainer />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 

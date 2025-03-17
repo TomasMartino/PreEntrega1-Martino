@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Item from "./components/Item";
 import "./ItemListContainer.css";
 import { useParams } from "react-router-dom";
+import NavBar from "./components/NavBar";
 
 export const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -23,10 +24,13 @@ export const ItemListContainer = () => {
   }, [params.id]);
 
   return (
-    <div className="fluid-grid">
-      {products.map((producto) => {
-        return <Item key={producto.id} producto={producto} />;
-      })}
-    </div>
+    <div  className="all-products">
+      <NavBar />
+      <div className="fluid-grid">
+        {products.map((producto) => {
+          return <Item key={producto.id} producto={producto} />;
+        })}
+      </div>
+    </div >
   );
 };

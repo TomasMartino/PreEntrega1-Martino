@@ -8,13 +8,8 @@ body {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  height: 80vh;
-  background-repeat: no-repeat;
   background-image: url("./assets/home/pexels-bohlemedia-1884584.jpg");
-  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center; 
-  background-color: rgb(237, 215, 187);
-  background-blend-mode: multiply; 
-  
+  background-position: center;
+  height: 80vh;
 }

@@ -14,7 +14,7 @@ section {
   justify-content: center;
   align-items: center;
   /* background: #d7dfe5; */
-  background: rgb(146, 145, 145);
+  background-color: rgb(237, 215, 187);
   overflow: hidden;
 
   display: flex;
@@ -34,6 +34,7 @@ section {
 }
 
 .swiper-slide {
+  background: rgb(255, 255, 255);
   width: 300px;
   height: 400px;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
@@ -69,7 +70,7 @@ section {
 }
 
 .swiper-slide h2 {
-  color: #fff;
+  color: #c44b4b;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 1.3rem;
@@ -78,23 +79,37 @@ section {
   padding: 25px 45px 0 25px;
 }
 
-.swiper-slide p {
-  color: #fff;
+.swiper-slide p { 
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   display: flex;
   align-items: center;
   padding: 0 25px 35px 25px;
 }
-
-.swiper-slide svg {
-  color: #fff;
-  width: 22px;
-  height: 22px;
-  margin-right: 7px;
+.price{
+  color: #080808;
 }
 
 .swiper-3d .swiper-slide-shadow-left,
 .swiper-3d .swiper-slide-shadow-right {
   background-image: none;
+}
+@media screen and (max-width: 1000px) {
+  section {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    min-height: 88vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: #d7dfe5; */
+    background-color: rgb(237, 215, 187);
+    overflow: hidden;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }

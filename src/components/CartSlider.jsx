@@ -62,7 +62,7 @@ function CartSlider() {
             >
               <span>{product.title}</span>
               <div>
-                <h2>
+                <h2 className="price">
                   Price: <strong>{product.price}</strong>
                 </h2>
               </div>
