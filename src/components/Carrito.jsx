@@ -1,5 +1,5 @@
 import NavBar from "./NavBar";
-import { miContexto } from "./CustomContext";
+import { miContexto } from "./customContext";
 import { useContext } from "react";
 import { useState } from "react";
 import { getFirestore, addDoc, collection } from "firebase/firestore";
@@ -26,10 +26,6 @@ function Carrito() {
     },
     []
   );
-
-  const totalPrecio = productosFusionados.reduce((acumulado, producto) => {
-    return acumulado + producto.price * producto.cantidad;
-  }, 0);
 
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -63,8 +59,26 @@ function Carrito() {
         console.log("Error al registrar la compra");
       });
   };
-  const [contador, setContador] = useState(0);
-  const [resta, setResta]= useState(0);
+
+  const totalPrecio = productosFusionados.reduce((acumulado, producto) => {
+    return acumulado + producto.price * producto.cantidad;
+  }, 0);
+
+  const handleSumaResta = (producto) => {
+    const cantidad = productosContadores[producto.id] || 0;
+    setProductosContadores({
+      ...productosContadores,
+      [producto.id]: cantidad + 1,
+    });
+    if (valor.cantProd=== 1) {
+      setTotal(0);  
+    }else{
+      
+      setTotal(total - producto.price);
+    }
+  };
+  const [productosContadores, setProductosContadores] = useState({});
+  const [total, setTotal] = useState(totalPrecio);
 
   return (
     <div>
@@ -72,23 +86,25 @@ function Carrito() {
       <div>
         <h1>Carrito</h1>
         <p>cantidad de productos: {valor.cantProd}</p>
-        <p>Total: ${totalPrecio - resta}</p> 
+        <p>Total: ${ total}</p>
         <ul>
           {productosFusionados.map((producto, index) => (
             <li key={index}>
               <img style={{ width: "100px" }} src={producto.images} alt="" />
               <p>Nombre: {producto.title}</p>
               <p>Precio: {producto.price}</p>
-              <p>Cantidad: {producto.cantidad - contador}</p>
+              <p>
+                Cantidad:{" "}
+                {producto.cantidad - (productosContadores[producto.id] || 0)}
+              </p>
               <button
                 onClick={() => {
-                  handleEliminar(producto);
-                  setContador(contador + 1);
-                  setResta(resta + producto.price);
+                  handleEliminar(producto, index);
+                  handleSumaResta(producto);
                 }}
               >
                 Eliminar
-              </button> 
+              </button>
             </li>
           ))}
         </ul>

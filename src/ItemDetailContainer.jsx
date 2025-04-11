@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./ItemDetailContainer.css";
 import NavBar from "./components/NavBar";
-import { miContexto } from "./components/CustomContext.jsx";
+import { miContexto } from "./components/customContext";
 import { useContext } from "react";
 import {
   collection,

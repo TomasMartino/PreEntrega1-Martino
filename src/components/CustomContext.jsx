@@ -41,12 +41,9 @@ const CustomContext = (props) => {
   };
 
   const handleEliminar = (producto) => {
-    console.log('Se ha hecho clic en el botón de eliminar producto');
-    console.log('Carrito:', carrito);
-    console.log('Producto _id:', producto._id);
-  
+    
     const productoExistente = carrito.find((p) => p.id === producto.id);
-    console.log('Producto existente:', productoExistente);
+     
     if (productoExistente) {
       if (productoExistente.cantidad > 1) {
         setCarrito(
@@ -92,7 +89,6 @@ const CustomContext = (props) => {
       }
     }
   };
-
 
 
 
