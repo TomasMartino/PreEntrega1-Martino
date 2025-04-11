@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './Footer.css'
 
 function Footer() {
@@ -33,22 +34,19 @@ function Footer() {
       </ul>
       <ul className="menu">
         <li className="menu-elem">
-          <a href="" className="menu-icon"> Inicio </a>
+          <Link to="/" className="menu-icon"> Inicio </Link>
+        </li> 
+        <li className="menu-elem">
+          <Link to="/contact" className="menu-icon"> Contacto </Link>
         </li>
         <li className="menu-elem">
-          <a href="" className="menu-icon"> Equipo </a>
+          <Link to="https://github.com/TomasMartino" className="menu-icon"> Github </Link>
         </li>
         <li className="menu-elem">
-          <a href="" className="menu-icon"> Contacto </a>
-        </li>
-        <li className="menu-elem">
-          <a href="" className="menu-icon"> Video </a>
-        </li>
-        <li className="menu-elem">
-          <a href="" className="menu-icon"> Sobre Nosotros </a>
+          <Link to={"https://www.instagram.com/tomas_martino.d/"} target="_blank" className="menu-icon"> Instagram </Link>
         </li>
       </ul>
-      <p className="text">@2025 | Todos los derechos reservados</p>
+      <p className="text">@ Copyright 2025 | Tomas Martino</p>
     </footer>
     </div>
   )

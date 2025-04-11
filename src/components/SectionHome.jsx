@@ -1,11 +1,12 @@
 import "./SectionHome.css";
+import { Link } from "react-router-dom";
 
 function SectionHome() {
   return (
     <div>
       <div className="container-all">
         <h1 className="title">Bienvenido a Voga</h1>
-        <input type="text" className="button-home" placeholder="Buscar Ahora" />
+        <Link className="button-home" to="/itemListContainer" style={{ fontSize: "16px" }}>Ver Productos</Link> 
       </div>
     </div>
   );
