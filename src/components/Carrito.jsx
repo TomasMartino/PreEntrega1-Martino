@@ -1,7 +1,7 @@
 import NavBar from "./NavBar";
 import { miContexto } from "./CustomContext";
 import { useContext } from "react";
-import { useState } from "react"; 
+import { useState } from "react";
 import { getFirestore, addDoc, collection } from "firebase/firestore";
 import { app } from "../ImportarProductos";
 
@@ -9,23 +9,27 @@ function Carrito() {
   const valor = useContext(miContexto);
   const { handleEliminar } = useContext(miContexto);
 
-  const productosEnCarrito = localStorage.getItem('productosEnCarrito');
-  const productosEnCarritoArray = productosEnCarrito ? JSON.parse(productosEnCarrito) : [];
+  const productosEnCarrito = localStorage.getItem("productosEnCarrito");
+  const productosEnCarritoArray = productosEnCarrito
+    ? JSON.parse(productosEnCarrito)
+    : [];
 
-  const productosFusionados = productosEnCarritoArray.reduce((acumulado, producto) => {
-    const productoExistente = acumulado.find((p) => p.id === producto.id);
-    if (productoExistente) {
-      productoExistente.cantidad += 1;
-    } else {
-      acumulado.push({ ...producto, cantidad: 1 });
-    }
-    return acumulado;
-  }, []);
+  const productosFusionados = productosEnCarritoArray.reduce(
+    (acumulado, producto) => {
+      const productoExistente = acumulado.find((p) => p.id === producto.id);
+      if (productoExistente) {
+        productoExistente.cantidad += 1;
+      } else {
+        acumulado.push({ ...producto, cantidad: 1 });
+      }
+      return acumulado;
+    },
+    []
+  );
 
   const totalPrecio = productosFusionados.reduce((acumulado, producto) => {
     return acumulado + producto.price * producto.cantidad;
   }, 0);
-  
 
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -59,22 +63,32 @@ function Carrito() {
         console.log("Error al registrar la compra");
       });
   };
- console.log (productosFusionados);
+  const [contador, setContador] = useState(0);
+  const [resta, setResta]= useState(0);
+
   return (
     <div>
       <NavBar />
       <div>
         <h1>Carrito</h1>
         <p>cantidad de productos: {valor.cantProd}</p>
-        <p>Total: ${totalPrecio}</p>
+        <p>Total: ${totalPrecio - resta}</p> 
         <ul>
           {productosFusionados.map((producto, index) => (
             <li key={index}>
               <img style={{ width: "100px" }} src={producto.images} alt="" />
               <p>Nombre: {producto.title}</p>
               <p>Precio: {producto.price}</p>
-              <p>Cantidad: {producto.cantidad}</p>
-              <button onClick={() => handleEliminar(producto)}>Eliminar</button>
+              <p>Cantidad: {producto.cantidad - contador}</p>
+              <button
+                onClick={() => {
+                  handleEliminar(producto);
+                  setContador(contador + 1);
+                  setResta(resta + producto.price);
+                }}
+              >
+                Eliminar
+              </button> 
             </li>
           ))}
         </ul>
