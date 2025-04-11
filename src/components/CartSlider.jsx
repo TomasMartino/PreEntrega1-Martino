@@ -2,7 +2,9 @@ import "./CartSlider.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
-import Swiper from "swiper";
+import Swiper from "swiper"; 
+import { getDocs, collection, getFirestore } from "firebase/firestore";
+import { app } from "../ImportarProductos.js";
 
 function CartSlider() {
   const swiperRef = useRef(null);
@@ -38,13 +40,23 @@ function CartSlider() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => {
-        return res.json();
+    const db = getFirestore(app);
+    const productosCollection = collection(db, "productos");
+  
+    const miConsulta = getDocs(productosCollection);
+  
+    const productoConFormato = [];
+  
+    miConsulta
+      .then((respuesta) => {
+        respuesta.docs.forEach((doc) => {
+          productoConFormato.push(doc.data());
+          setProducts(productoConFormato);
+        })
       })
-      .then((res) => {
-        setProducts(res.products);
-      });
+      .catch(() => {
+        console.log("Error al cargar los productos");
+      })
   }, []);
 
   return (
@@ -58,7 +70,7 @@ function CartSlider() {
             <div
               key={index}
               className={`swiper-slide swiper-slide--${index + 1}`}
-              style={{ backgroundImage: `url(${product.thumbnail})` }}
+              style={{ backgroundImage: `url(${product.images})` }}
             >
               <span>{product.title}</span>
               <div>

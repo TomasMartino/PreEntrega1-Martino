@@ -29,9 +29,9 @@ function Navbar() {
               <Link to="/contact">Contact</Link>
             </li>
             <li onClick={removeActive}>
-              <Link to="/cart">
+              
                 <CartWidget />
-              </Link>
+              
             </li>
           </ul>
 

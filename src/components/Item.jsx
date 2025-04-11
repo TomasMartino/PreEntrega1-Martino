@@ -42,7 +42,7 @@ const Item = (props) => {
            
             <div 
               className={`swiper-slide `}
-              style={{ backgroundImage: `url(${props.producto.thumbnail})` }}
+              style={{ backgroundImage: `url(${props.producto.images})` }}
             >
               <span>{props.producto.title}</span>
               <div>
